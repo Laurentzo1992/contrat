@@ -1,0 +1,56 @@
+{% extends 'gestioncontrat/add.html' %}
+
+<!-- Modal ID -->
+
+{% block modal_id %} id="editModal{{citoyen.pk}}" {% endblock modal_id %}
+
+<!-- Modal Title -->
+
+{% block modal_title %} 
+    <i class="fa fa-edit"></i>&nbsp;&nbsp; Edit Contrat 
+{% endblock modal_title %}
+
+<!-- Form action -->
+
+{% block action %} action="/edit" {% endblock action %}
+
+<!-- Buton Action -->
+
+{% block btn_action %}<i class="fa fa-server"></i>&nbsp;&nbsp; Save Changes {% endblock btn_action %}
+
+<!-- ========== All Inputs =========== -->
+
+<!-- ID -->
+{% block value_id %} 
+<div class="input-group mb-3">
+ <input type="hidden" class="form-control" name="id" value="{{citoyen.id}}" readonly>
+</div>
+{% endblock value_id %}
+
+<!-- Numero  -->
+{% block value_num %} value="{{contrat.num}}" readonly {% endblock value_num %}
+<!-- Name -->
+{% block value_nom %} value="{{contrat.nom}}" {% endblock value_nom %}
+<!-- Prenom -->
+{% block value_prenom %} value="{{contrat.prenom}}" {% endblock value_prenom %}
+<!-- Date Naissance -->
+{% block value_date_naissance %} value="{{contrat.date_naissance}}" {% endblock value_date_naissance %}
+<!-- Lieu Naissance -->
+{% block value_lieu_naissance %} value="{{contrat.lieu_naissance}}" {% endblock value_lieu_naissance %}
+<!-- Genre -->
+{% block option1 %} 
+<option style="background-color: #d3d3d3; counter-reset: #111;">{{contrat.genre}}</option> 
+{% endblock option1 %}
+<!-- Civilité -->
+{% block option2 %} 
+<option option style="background-color: #d3d3d3; counter-reset: #111;">{{contrat.civilite}}</option>
+{% endblock option2 %}
+<!-- Situation Matrimoniale -->
+{% block option3 %} 
+  <option option style="background-color: #d3d3d3; counter-reset: #111;">{{contrat.situation_matrimoniale}}</option>
+{% endblock option3 %}
+<!-- Note -->
+{% block note %} {{contrat.note}} {% endblock note %}
+
+
+

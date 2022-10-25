@@ -1,0 +1,143 @@
+{% load static %}
+{% load bootstrap_icons %}
+
+<!DOCTYPE html>
+<html>
+<!-------------Entête des methadonnées------------------>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon-->
+    <link rel="shortcut icon" href={% static "/images/app_img/favicon.ico" %}>
+    <!-- logo-->
+    <link rel="shortcut icon" href={% static "/images/app_img/logo.ico" %}>
+    <!-- bootstrap css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- fontAwesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS Static file--> 
+    <link rel="stylesheet" href={% static "css/index.css" %}>
+	<link rel="stylesheet" href={% static "css/styles.css" %}>
+    <!-- CSS Datatables -->
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/b-print-2.2.3/datatables.min.css"/> 
+     <title>clm</title> 
+</head>
+<body>
+	<input type="checkbox" name="" id="menu">
+
+	<!-------------Menu lateral gauche-------------------->
+    
+	<div class="sidebar">
+		
+		<!-----------items des liens du menu-------------->
+
+		<div class="sidebar-menu">
+			<ul>
+				<li><a href="{% url 'home' %}" class="active"><span class="fa-solid fa-home"></span><span></span>Accueil</a></li>
+				<li><a href="{% url 'users' %}"><span class="fa-solid fa-gears"></span><span></span>Adminstration</a></li>
+				<li><a href="{% url 'contrat' %}"><span class="fa-solid fa-file-signature"></span><span></span>Contrat</a></li>
+				<li><a href="{% url 'convention' %}"><span class="fa-solid fa-people-arrows"></span><span></span>Convention</a></li>
+				<li><a href="{% url 'statistique' %}"><span class="fa-solid fa-chart-bar"></span><span></span>Statistiques</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!---------------Entête------------------------>
+		<div class="content">
+				<header>
+					<p><label for="menu"><span class="fa-solid fa-bars"></span></label><span class="accueil">Contract Life Management</span></p>
+					<div class="search-wrapp">
+						<span class="fa-solid fa-search"></span>
+						<input type="search" name="" placeholder="recherche">
+					</div>
+					<div id="dropdown" class="user-wrapp">
+						<div>
+							<h4>{{request.user}}</h4>
+						</div>
+						<div class="dropdown-content">
+							<a  href="{% url 'profile' %}" class="btn btn-sm btn-modal">profile</a>
+                            <a href="{% url 'logout_user' %}" class="btn  btn-sm btn-modal">loggout</a>
+						</div>
+					</div>
+				</header>
+
+<!---------------Contenu principal------------------------>
+					 {% block main %} 
+				<main>
+<!---------------zone Card-------------------------->
+					<div class="cards">
+
+						<div class="card-single">
+							<div>
+								<h2>200</h2>
+								<small>Nombre de contract</small>
+							</div>
+							<div>
+								<span class="fa-solid fa-file-signature"></span>
+							</div>
+						</div>
+						<div class="card-single">
+							<div>
+								<h2>30</h2>
+								<small>Nombre de convention</small>
+							</div>
+							<div>
+								<span class="fa-solid fa-people-arrows"></span>
+							</div>
+						</div>
+						<div class="card-single">
+							<div>
+								<h2>58</h2>
+								<small>Echeance expiré</small>
+							</div>
+							<div>
+								<span class="fa-solid fa-outdent"></span>
+							</div>
+						</div>
+						<div class="card-single">
+							<div>
+							    <h2>20</h2>
+							    <small>Contrats Archivé </small>
+							</div>
+							<div>
+							<span class="fa-solid fa-users"></span>
+							</div>
+						</div>
+					</div>
+
+<!------------** inclusion du tableau des contrats **-------------------------->
+
+					
+				</main>
+
+				{% endblock main %}
+		</div>
+
+
+
+		{% block content %}{% endblock content %}
+
+
+<!------------******-Scripts****-------------------------->
+
+<!------------******start Message sript zone ****-------------------------->
+
+<!------------****** end Message sript zone ****-------------------------->
+
+
+	 <!-- bootstrap5 js-->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     <!-- jquery--> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
+      <!-- Datatables JS cdn -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/b-print-2.2.3/datatables.min.js"></script> 
+
+</body>
+</html>

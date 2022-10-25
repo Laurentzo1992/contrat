@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+
+
+{% block content %}{% endblock content %}
+{% block main%}
+
+<table class="table caption-top">
+  <br><br><br>
+<a href="#" style="float: right; margin-right: 30px;" title="Add contrat">
+  <i style="color: yellowgreen; font-size: 25px; " class="fa-sharp fa-solid fa-folder-plus"></i> &nbsp;&nbsp;
+</a>
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Username</th>
+      <th scope="col">Compte actif</th>
+      <th scope="col">Dernière connexion</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for user_list in user_lists %}
+    <tr>
+      <th scope="row">{{user_list.id}}</th>
+      <td>{{user_list.username}}</td>
+      <td>{{user_list.is_active}}</td>
+      <td>{{user_list.last_login}}</td>
+      <td>
+        <a class="btn btn-success text-center" title="Edit Contrat" data-bs-toggle="modal" data-bs-target="#editModal{{contrat.pk}}">
+            <i style="font-size: 15px;" class="fas fa-pen"></i>
+        </a>
+    </td>
+    <td>
+        <a class="btn btn-secondary text-center" title="Delete Contrat" data-bs-toggle="modal" data-bs-target="#deleteModal{{contrat.pk}}">
+            <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
+        </a>
+    </td> 
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% comment %} {% include 'gestioncontrat/add.html' %} {% endcomment %}
+{% comment %} {% include 'gestioncontrat/edit.html' %}
+{% include 'gestioncontrat/modals/delete.html' %} {% endcomment %}
+  {% endblock main%}
+
