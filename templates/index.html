@@ -3,141 +3,208 @@
 
 <!DOCTYPE html>
 <html>
-<!-------------Entête des methadonnées------------------>
+
+<!--   Entête des methadonnées   -->
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- favicon-->
-    <link rel="shortcut icon" href={% static "/images/app_img/favicon.ico" %}>
-    <!-- logo-->
-    <link rel="shortcut icon" href={% static "/images/app_img/logo.ico" %}>
-    <!-- bootstrap css-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- fontAwesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- CSS Static file--> 
-    <link rel="stylesheet" href={% static "css/index.css" %}>
-	<link rel="stylesheet" href={% static "css/styles.css" %}>
-    <!-- CSS Datatables -->
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/b-print-2.2.3/datatables.min.css"/> 
-     <title>clm</title> 
+    	<meta charset="utf-8">
+   		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="description" content="">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<!-- favicon-->
+    	<link rel="shortcut icon" href={% static "/images/app_img/favicon.ico" %}>
+    	<!-- logo-->
+    	<link rel="shortcut icon" href={% static "/images/app_img/logo.ico" %}>
+    	<!-- bootstrap css-->
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+   		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    	<!-- fontAwesome-->
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    	<!-- CSS Static file--> 
+    	<link rel="stylesheet" href={% static "css/index.css" %}>
+		<link rel="stylesheet" href={% static "css/styles.css" %}>
+    	<!-- CSS Datatables -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/b-print-2.2.3/datatables.min.css"/>
+	 	<title>clm</title> 
 </head>
 <body>
-	<input type="checkbox" name="" id="menu">
 
 	<!-------------Menu lateral gauche-------------------->
-    
-	<div class="sidebar">
-		
-		<!-----------items des liens du menu-------------->
 
-		<div class="sidebar-menu">
-			<ul>
-				<li><a href="{% url 'home' %}" class="active"><span class="fa-solid fa-home"></span><span></span>Accueil</a></li>
-				<li><a href="{% url 'users' %}"><span class="fa-solid fa-gears"></span><span></span>Adminstration</a></li>
-				<li><a href="{% url 'contrat' %}"><span class="fa-solid fa-file-signature"></span><span></span>Contrat</a></li>
-				<li><a href="{% url 'convention' %}"><span class="fa-solid fa-people-arrows"></span><span></span>Convention</a></li>
-				<li><a href="{% url 'statistique' %}"><span class="fa-solid fa-chart-bar"></span><span></span>Statistiques</a></li>
-			</ul>
+		<div class="container-fluid">
+			<div class="row flex-nowrap">
+				<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+					<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+						<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+							<li class="nav-item">
+								<a href="{% url 'home' %}" class="nav-link align-middle px-0">
+									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+								</a>
+							</li>
+							<li>
+								<a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+									<i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Settings</span> </a>
+								<ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+									<li class="w-100">
+										<a href="{% url 'users' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Users</span></a>
+									</li>
+									<li>
+										<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Groups</span></a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#" class="nav-link px-0 align-middle">
+									<i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+							</li>
+							<li>
+								<a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+									<i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Contract</span></a>
+								<ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+									<li class="w-100">
+										<a href="{% url 'contrat' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Work contract</span></a>
+									</li>
+									<li>
+										<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span></a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+									<i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Convention</span> </a>
+								<ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+									<li class="w-100">
+										<a href="{% url 'convention' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Patenariat</span> </a>
+									</li>
+									<li>
+										<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"></span> </a>
+									</li>
+									<li>
+										<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Financement</span> </a>
+									</li>
+									<li>
+										<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> </a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#" class="nav-link px-0 align-middle">
+									<i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+							</li>
+						</ul>
+						<hr>
+						<div class="dropdown pb-4">
+							<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+								<img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+								<span class="d-none d-sm-inline mx-1">{{request.user}}</span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+								<li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="{% url 'logout_user' %}">Log out</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col py-3">
+
+				
+				<div class="row m-sm-4">
+					{% block btn %}{% endblock btn %}
+				</div>
+
+				
+				<!---------------Contenu principal------------------------>
+					{% block main %} 
+					<main>
+	
+						<div class="cards">
+	
+							<div class="card-single">
+								<div>
+									<h2>200</h2>
+									<small>Nombre de contract</small>
+								</div>
+								<div>
+									<span class="fa-solid fa-file-signature"></span>
+								</div>
+							</div>
+							<div class="card-single">
+								<div>
+									<h2>30</h2>
+									<small>Nombre de convention</small>
+								</div>
+								<div>
+									<span class="fa-solid fa-people-arrows"></span>
+								</div>
+							</div>
+							<div class="card-single">
+								<div>
+									<h2>58</h2>
+									<small>Echeance expiré</small>
+								</div>
+								<div>
+									<span class="fa-solid fa-outdent"></span>
+								</div>
+							</div>
+							<div class="card-single">
+								<div>
+									<h2>20</h2>
+									<small>Contrats Archivé </small>
+								</div>
+								<div>
+								<span class="fa-solid fa-users"></span>
+								</div>
+							</div>
+						</div>
+					</main>
+
+					{% endblock main %}
+
+				</div>
+			</div>
 		</div>
-	</div>
-
-	<!---------------Entête------------------------>
-		<div class="content">
-				<header>
-					<p><label for="menu"><span class="fa-solid fa-bars"></span></label><span class="accueil">Contract Life Management</span></p>
-					<div class="search-wrapp">
-						<span class="fa-solid fa-search"></span>
-						<input type="search" name="" placeholder="recherche">
-					</div>
-					<div id="dropdown" class="user-wrapp">
-						<div>
-							<h4>{{request.user}}</h4>
-						</div>
-						<div class="dropdown-content">
-							<a  href="{% url 'profile' %}" class="btn btn-sm btn-modal">profile</a>
-                            <a href="{% url 'logout_user' %}" class="btn  btn-sm btn-modal">loggout</a>
-						</div>
-					</div>
-				</header>
-
-<!---------------Contenu principal------------------------>
-					 {% block main %} 
-				<main>
-<!---------------zone Card-------------------------->
-					<div class="cards">
-
-						<div class="card-single">
-							<div>
-								<h2>200</h2>
-								<small>Nombre de contract</small>
-							</div>
-							<div>
-								<span class="fa-solid fa-file-signature"></span>
-							</div>
-						</div>
-						<div class="card-single">
-							<div>
-								<h2>30</h2>
-								<small>Nombre de convention</small>
-							</div>
-							<div>
-								<span class="fa-solid fa-people-arrows"></span>
-							</div>
-						</div>
-						<div class="card-single">
-							<div>
-								<h2>58</h2>
-								<small>Echeance expiré</small>
-							</div>
-							<div>
-								<span class="fa-solid fa-outdent"></span>
-							</div>
-						</div>
-						<div class="card-single">
-							<div>
-							    <h2>20</h2>
-							    <small>Contrats Archivé </small>
-							</div>
-							<div>
-							<span class="fa-solid fa-users"></span>
-							</div>
-						</div>
-					</div>
-
-<!------------** inclusion du tableau des contrats **-------------------------->
-
-					
-				</main>
-
-				{% endblock main %}
-		</div>
-
-
 
 		{% block content %}{% endblock content %}
 
-
-<!------------******-Scripts****-------------------------->
-
-<!------------******start Message sript zone ****-------------------------->
-
-<!------------****** end Message sript zone ****-------------------------->
-
-
-	 <!-- bootstrap5 js-->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-     <!-- jquery--> 
+	<!-- bootstrap5 js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- jquery--> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
-      <!-- Datatables JS cdn -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <!-- Datatables JS cdn -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/b-print-2.2.3/datatables.min.js"></script> 
+
+
+
+	<script>
+		$(document).ready(function () {
+			var newSearch = $("#example").DataTable();
+
+			var table = $('#exemple').DataTable({
+
+                //Datatable configurations
+                paging: true, //Pagination
+                pageLength: 5, // Data per page
+                lengthChange: true, //Show entries per page
+                searching: true, //Input search
+                bSort: true, // Filter A to Z and Z to A (and number)
+                orderCellsTop: true, //Put the filter A to Z and Z to A on top (first Thead)
+                scrollX: true, // Enable the scroll horizontal
+              
+            
+            });
+
+            $('#search').keyup(function(){
+                newSearch.search($(this).val()).draw();
+            })
+
+		});
+    </script>
 
 </body>
 </html>

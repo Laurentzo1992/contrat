@@ -48,37 +48,11 @@ def home(request):
 #Function to create users
 
 def add(request):
-     if request.method=="POST":
-        if request.POST.get('username') \
-            and request.POST.get('password') \
-            and request.POST.get('first_name') \
-            and request.POST.get('last_name') \
-            and request.POST.get('email'):
-            user_user = User()
-            user_user.username = request.POST.get('username')
-            user_user.password = request.POST.get('password')
-            user_user.first_name = request.POST.get('first_name')
-            user_user.last_name = request.POST.get('last_name')
-            user_user.email = request.POST.get('email')
-            user_user.save()
-            messages.success(request, "User added successfully !")
-            return HttpResponseRedirect("list_user") 
-        else: 
-            return render(request, 'authentication/create.html')
+    return render(request, 'authentication/create.html')
 # Edit user create function
 #@login_required
 def edit(request):
-    if request.method == "POST":
-        user_user = User.objects.get(id = request.POST.get('id'))
-        if user_user != None:
-            user_user.username = request.POST.get('username')
-            user_user.password = request.POST.get('password')
-            user_user.first_name = request.POST.get('first_name')
-            user_user.last_name = request.POST.get('last_name')
-            user_user.email = request.POST.get('email')
-            user_user.save()
-            messages.success(request, "User updated successfully !")
-            return HttpResponseRedirect("users")
+    return HttpResponseRedirect("users")
 #---------------------------------------------------------------------------
 # Edit user create function
 

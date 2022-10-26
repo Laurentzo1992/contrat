@@ -11,10 +11,10 @@ from  gestioncontrat.models import Travail, Categorie, Financement, Structure, P
 
 def contrat(request):
     contrats = Travail.objects.all()
-    paginator = Paginator(contrats, 4)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    context = {"page_obj":page_obj}
+    # paginator = Paginator(contrats, 4)
+    # page_number = request.GET.get('page')
+    # page_obj = paginator.get_page(page_number)
+    context = {"contrats":contrats}
     return render(request, 'gestioncontrat/contrat.html', context)
 
 
