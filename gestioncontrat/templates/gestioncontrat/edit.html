@@ -1,56 +1,77 @@
-{% extends 'gestioncontrat/add.html' %}
+{% extends 'index.html' %}
 
-<!-- Modal ID -->
+{% load crispy_forms_tags %}
+{% load bootstrap_icons %}
+{% comment %} {% load django_bootstrap5 %} {% endcomment %}
+{% block content %}{% endblock content %}
 
-{% block modal_id %} id="editModal{{citoyen.pk}}" {% endblock modal_id %}
+{% block main%}
 
-<!-- Modal Title -->
+           
+   <div class="container mt-3" style="width: 95%; font-size: 14px">
+      
+      <form method="POST" autocomplete="off" enctype="multipart/form-data"> 
+            {% csrf_token %}
 
-{% block modal_title %} 
-    <i class="fa fa-edit"></i>&nbsp;&nbsp; Edit Contrat 
-{% endblock modal_title %}
+            {% comment %} {% bootstrap_form form %} {% endcomment %}
 
-<!-- Form action -->
+         <div class="row">
+            <div class="col-6">{{form.reference|as_crispy_field}}</div>
+            <div class="col-6">{{form.objet|as_crispy_field}}</div>
+         </div>
 
-{% block action %} action="/edit" {% endblock action %}
+         <div class="row">
+            <div class="col-6">{{form.nature|as_crispy_field}}</div>
+            <div class="col-6">{{form.matricule|as_crispy_field}}</div>
+         </div>
 
-<!-- Buton Action -->
+         <div class="row">
+            <div class="col-4">{{form.nom|as_crispy_field}}</div>
+            <div class="col-4">{{form.prenom|as_crispy_field}}</div>
+            <div class="col-4">{{form.montant|as_crispy_field}}</div>
+         </div>
 
-{% block btn_action %}<i class="fa fa-server"></i>&nbsp;&nbsp; Save Changes {% endblock btn_action %}
+           <div class="row">
+            <div class="col-4">{{form.duree|as_crispy_field}}</div>
+            <div class="col-4">{{form.date_signature|as_crispy_field}}</div>
+            <div class="col-4">{{form.date_debut|as_crispy_field}}</div>
+         </div>
 
-<!-- ========== All Inputs =========== -->
+         <div class="row">
+            <div class="col-4">{{form.date_fin|as_crispy_field}}</div>
+            <div class="col-4">{{form.nombre_renouv|as_crispy_field}}</div>
+            <div class="col-4">{{form.date_renouvel|as_crispy_field}}</div>
+         </div>
 
-<!-- ID -->
-{% block value_id %} 
-<div class="input-group mb-3">
- <input type="hidden" class="form-control" name="id" value="{{citoyen.id}}" readonly>
-</div>
-{% endblock value_id %}
+         <div class="row">
+            <div class="col-4">{{form.lieu|as_crispy_field}}</div>
+            <div class="col-4">{{form.date_alerte|as_crispy_field}}</div>
+            <div class="col-4"> {{form.file|as_crispy_field}}</div>
+         </div>
 
-<!-- Numero  -->
-{% block value_num %} value="{{contrat.num}}" readonly {% endblock value_num %}
-<!-- Name -->
-{% block value_nom %} value="{{contrat.nom}}" {% endblock value_nom %}
-<!-- Prenom -->
-{% block value_prenom %} value="{{contrat.prenom}}" {% endblock value_prenom %}
-<!-- Date Naissance -->
-{% block value_date_naissance %} value="{{contrat.date_naissance}}" {% endblock value_date_naissance %}
-<!-- Lieu Naissance -->
-{% block value_lieu_naissance %} value="{{contrat.lieu_naissance}}" {% endblock value_lieu_naissance %}
-<!-- Genre -->
-{% block option1 %} 
-<option style="background-color: #d3d3d3; counter-reset: #111;">{{contrat.genre}}</option> 
-{% endblock option1 %}
-<!-- Civilité -->
-{% block option2 %} 
-<option option style="background-color: #d3d3d3; counter-reset: #111;">{{contrat.civilite}}</option>
-{% endblock option2 %}
-<!-- Situation Matrimoniale -->
-{% block option3 %} 
-  <option option style="background-color: #d3d3d3; counter-reset: #111;">{{contrat.situation_matrimoniale}}</option>
-{% endblock option3 %}
-<!-- Note -->
-{% block note %} {{contrat.note}} {% endblock note %}
-
-
-
+         <div class="mt-4" style="width: 100p%;">
+            <button style= "font-size: 15px;" type="submit" class="btn btn-success mb-3">
+            <i class="fas fa-plus"></i>&nbsp;&nbsp; Add Contrat
+            </button>
+            <a style= "font-size: 15px;" href="{% url 'contrat' %}" type="button" class="btn btn-outline-danger mb-3 ms-2" style="wdith: 50px;" title="Close">
+                  <i class="fas fa-times"></i>
+            </a>
+         </div> 
+          
+      </form>
+   </div>
+         {% for message in messages %}
+               <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+               {% if message.tags == 'error' %}
+               <script>
+                     var m = "{{ message }}";
+                     swal("Denied !", "Enter your data correctly.", "error")
+               </script>
+               {% elif message.tags == 'success' %}
+               <script>
+                     var m = "{{ message }}";
+                     swal("Perfect !", m, "success")
+               </script>
+               {% endif %}
+         {% endfor%}
+{% endblock main%}

@@ -10,7 +10,7 @@
            
    <div class="container mt-3" style="width: 95%; font-size: 14px">
       
-      <form method="POST" class="card p-3 mt-5" {% block action %} action="{% url 'add' %}" {% endblock action %} autocomplete="off" enctype="multipart/form-data"> 
+      <form method="POST" class="card p-3 mt-5" {% block action %} action="{% url 'add_contrat' %}" {% endblock action %} autocomplete="off" enctype="multipart/form-data"> 
             {% csrf_token %}
 
             {% comment %} {% bootstrap_form form %} {% endcomment %}
@@ -51,7 +51,7 @@
 
          <div class="mt-4" style="width: 100p%;">
             <button style= "font-size: 15px;" type="submit" class="btn btn-success mb-3">
-               {% block btn_action %}<i class="fas fa-plus"></i>&nbsp;&nbsp; Add Contrat {% endblock btn_action %}
+            <i class="fas fa-plus"></i>&nbsp;&nbsp; Add Contrat
             </button>
             <a style= "font-size: 15px;" href="{% url 'contrat' %}" type="button" class="btn btn-outline-danger mb-3 ms-2" style="wdith: 50px;" title="Close">
                   <i class="fas fa-times"></i>
@@ -74,4 +74,5 @@
                </script>
                {% endif %}
          {% endfor%}
+
 {% endblock main%}
