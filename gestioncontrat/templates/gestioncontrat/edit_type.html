@@ -16,15 +16,14 @@
             {% comment %} {% bootstrap_form form %} {% endcomment %}
 
          <div class="row">
-            <div class="col-6">{{form.sigle|as_crispy_field}}</div>
-            <div class="col-6">{{form.nom|as_crispy_field}}</div>
+            {{form.libelle|as_crispy_field}}
          </div>
 
          <div class="mt-4" style="width: 100p%;">
             <button style= "font-size: 15px;" type="submit" class="btn btn-success mb-3">
-            <i class="fas fa-plus"></i>&nbsp;&nbsp; Edit Structure
+            <i class="fas fa-plus"></i>&nbsp;&nbsp; Edit Type
             </button>
-            <a style= "font-size: 15px;" href="{% url 'structure' %}" type="button" class="btn btn-outline-danger mb-3 ms-2" style="wdith: 50px;" title="Close">
+            <a style= "font-size: 15px;" href="{% url 'type' %}" type="button" class="btn btn-outline-danger mb-3 ms-2" style="wdith: 50px;" title="Close">
                   <i class="fas fa-times"></i>
             </a>
          </div> 

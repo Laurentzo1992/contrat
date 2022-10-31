@@ -16,13 +16,20 @@
             {% comment %} {% bootstrap_form form %} {% endcomment %}
 
          <div class="row">
-            <div class="col-6">{{form.reference|as_crispy_field}}</div>
-            <div class="col-6">{{form.objet|as_crispy_field}}</div>
+            <div class="col-4">{{form.reference|as_crispy_field}}</div>
+            <div class="col-4">{{form.objet|as_crispy_field}}</div>
+            <div class="col-4">{{form.type|as_crispy_field}}</div>
          </div>
 
          <div class="row">
-            <div class="col-6">{{form.nature|as_crispy_field}}</div>
-            <div class="col-6">{{form.matricule|as_crispy_field}}</div>
+            <div class="col-4">{{form.nature|as_crispy_field}}</div>
+            <div class="col-4">{{form.partenaire|as_crispy_field}}</div>
+            <div class="col-4">{{form.structure|as_crispy_field}}</div>
+         </div>
+
+         <div class="row">
+           
+            <div class="col-12">{{form.matricule|as_crispy_field}}</div>
          </div>
 
          <div class="row">

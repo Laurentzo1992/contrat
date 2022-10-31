@@ -2,7 +2,7 @@
 {% load bootstrap_icons %}
 
 {% block btn %}
-					<a href="{% url 'add_contrat' %}" class="btn-outline-secondary"style="width: 50px; height: 50px; margin-right: 30px;" title="Add contrat">
+					<a href="{% url 'add_struct' %}" class="btn-outline-secondary"style="width: 50px; height: 50px; margin-right: 30px;" title="Add structure">
 						<i style="color: yellowgreen; font-size: 25px; " class="fa-sharp fa-solid fa-folder-plus"></i> &nbsp;&nbsp;
 					</a>
 {% endblock btn %}
@@ -16,10 +16,9 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Signe</th>
+      <th scope="col">Sigle</th>
       <th scope="col">nom</th>
-      <th scope="col">edit</th>
-      <th scope="col">delete</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -33,8 +32,6 @@
         <a href="{% url 'edit_struct' structure.id %}" class="btn btn-success text-center" title="Edit Structure">
             <i style="font-size: 15px;" class="fas fa-pen"></i>
         </a>
-    </td>
-    <td>
         <a class="btn btn-secondary text-center" title="Delete Structure" data-bs-toggle="modal" data-bs-target="#deleteModal{{structure.id}}">
             <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
         </a>

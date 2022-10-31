@@ -4,8 +4,67 @@ from django.core.paginator import Paginator
 from urllib import request, response
 from django.http import JsonResponse, HttpResponseRedirect
 from  django.contrib import messages
-from .forms import TravailForm, Structureform, PartenaireForm
-from  gestioncontrat.models import Travail, Structure, Partenaire
+from .forms import TravailForm, Structureform, PartenaireForm, TypeForm
+from  gestioncontrat.models import Travail, Structure, Partenaire, Type
+
+######################################################################################
+
+#Zone to manage Type contrat
+
+#############################################
+# function to view Type contrat  
+############################################
+
+def type(request):
+    types = Type.objects.all()
+    context={"types":types}
+    return render(request, 'gestioncontrat/type.html', context)
+
+
+#############################################
+# function to Create Type contrat  
+############################################
+
+def add_type(request):
+    if request.method=="POST":
+        form = TypeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "successfully !")
+            return redirect('type')
+        else:
+            return render(request, 'gestioncontrat/add_type.html', {"form":form})
+    else:
+        form = TypeForm()
+        return render(request, 'gestioncontrat/add_type.html', {"form":form})
+    
+    
+#############################################
+# function to edit Type contrat  
+############################################ 
+def edit_type(request, id):
+    type = Type.objects.get(id=id)
+    if request.method == 'POST':
+        form = TypeForm(request.POST, instance=type)
+        if form.is_valid():
+            form.save(id)
+            return redirect('type')
+    else:
+        form = TypeForm(instance=type)
+    return render(request, 'gestioncontrat/edit_type.html', {'form':form})
+
+
+#############################################
+# function to delete Type contrat  
+############################################ 
+
+def delete_type(request, id):
+    type = Type.objects.get(id = id)
+    type.delete()
+    messages.success(request, 'Type deleted successfully !')
+    return HttpResponseRedirect("type")
+
+
 
 ######################################################################################
 
@@ -31,7 +90,7 @@ def add_struct(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Structure added successfully !")
-            return HttpResponseRedirect("structure")
+            return redirect('structure')
         else:
             return render(request, 'gestioncontrat/add_struct.html', {"form":form})
     else:
@@ -45,7 +104,7 @@ def add_struct(request):
 def edit_struct(request, id):
     structure = Structure.objects.get(id=id)
     if request.method == 'POST':
-        form = Structureform(request.POST,request.FILES, instance=contrat)
+        form = Structureform(request.POST, instance=structure)
         if form.is_valid():
             form.save(id)
             return redirect('structure')
@@ -92,7 +151,7 @@ def add_part(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Partenaire added successfully !")
-            return HttpResponseRedirect("partenaire")
+            return redirect('partenaire')
         else:
             return render(request, 'gestioncontrat/add_part.html', {"form":form})
     else:
@@ -152,7 +211,7 @@ def add_contrat(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Contrat added successfully !")
-            return HttpResponseRedirect("contrat")
+            return HttpResponseRedirect('contrat')
         else:
             return render(request, 'gestioncontrat/add.html', {"form":form})
     else:

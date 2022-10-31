@@ -13,5 +13,9 @@ urlpatterns = [
     path('gestioncontrat/partenaire', views.partenaire, name="partenaire"), 
     path('gestioncontrat/partenaire/add', views.add_part, name="add_part"),
     path('gestioncontrat/partenaire/edit/<int:id>', views.edit_part, name="edit_part"),
-    path('gestioncontrat/partenaire/delete/<int:id>', views.delete_part, name="delete_part"),   
+    path('gestioncontrat/partenaire/delete/<int:id>', views.delete_part, name="delete_part"),
+    path('gestioncontrat/type', views.type, name="type"), 
+    path('gestioncontrat/type/add', views.add_type, name="add_type"),
+    path('gestioncontrat/type/edit/<int:id>', views.edit_type, name="edit_type"),
+    path('gestioncontrat/type/delete/<int:id>', views.delete_type, name="delete_type"),   
 ]

@@ -1,5 +1,3 @@
-from dataclasses import fields
-from pyexpat import model
 from django import forms
 from gestioncontrat.models import Travail, Structure, Partenaire, Type
 from django.core.validators import RegexValidator
@@ -97,9 +95,9 @@ class PartenaireForm(forms.ModelForm):
 
     email = forms.CharField(
         label='Signle',
-        validators=[RegexValidator(r'^[A-Z0-9]*$',
-        message="Lettre majuscule et chiffre autorisé")],
-        widget=forms.TextInput(attrs={'placeholder': 'Signe'})
+        validators=[RegexValidator(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$',
+        message="Value of Email not correct")],
+        widget=forms.TextInput(attrs={'placeholder': 'Email'})
     )
     
     nom = forms.CharField(
@@ -117,16 +115,9 @@ class PartenaireForm(forms.ModelForm):
 
 class TypeForm(forms.ModelForm):
     
-    email = forms.CharField(
-        label='Signle',
-        validators=[RegexValidator(r'^[A-Z0-9]*$',
-        message="Lettre majuscule et chiffre autorisé")],
-        widget=forms.TextInput(attrs={'placeholder': 'Signe'})
-    )
-    
-    nom = forms.CharField(
-        label='Nom',
-        widget=forms.TextInput(attrs={'placeholder': 'Nom'})
+    libelle = forms.CharField(
+        label='Libele',
+        widget=forms.TextInput(attrs={'placeholder': 'Libele'})
     )
     
     class  Meta:

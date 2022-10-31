@@ -1,4 +1,3 @@
-from typing import Type
 from django.contrib import admin
 from gestioncontrat.models import Travail, Structure, Partenaire, Type
 

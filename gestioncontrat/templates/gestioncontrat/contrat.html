@@ -23,9 +23,8 @@
       <th scope="col">fin</th>
       <th scope="col">Lieu</th>
       <th scope="col">Alerte</th>
-      <th scope="col">File</th>
-      <th scope="col">edit</th>
-      <th scope="col">delete</th>
+      <th scope="col">Action</th>
+
     </tr>
   </thead>
   <tbody>
@@ -42,19 +41,15 @@
       <td>{{contrat.date_alerte}}</td>
       <td>
         <a href ="{{contrat.file.url}}" title="Lire le fichier">
-        <i style="font-size: 25px; color: green" class="fa-solid fa-file-pdf"></i>
+            <i style="font-size: 25px; color: green" class="fa-solid fa-file-pdf"></i>
         </a>
-      </td>
-      <td>
         <a href="{% url 'edit_contrat' contrat.id %}" class="btn btn-success text-center" title="Edit Contrat">
             <i style="font-size: 15px;" class="fas fa-pen"></i>
         </a>
-    </td>
-    <td>
         <a class="btn btn-secondary text-center" title="Delete Contrat" data-bs-toggle="modal" data-bs-target="#deleteModal{{contrat.id}}">
             <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
         </a>
-    </td> 
+      </td> 
     </tr>
     {% endfor %}
   </tbody>
