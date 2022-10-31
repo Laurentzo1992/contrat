@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class Convention(models.Model):
      
     reference = models.CharField(max_length=10)

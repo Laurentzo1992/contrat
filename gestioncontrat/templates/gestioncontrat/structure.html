@@ -1,0 +1,76 @@
+{% extends 'index.html' %}
+{% load bootstrap_icons %}
+
+{% block btn %}
+					<a href="{% url 'add_contrat' %}" class="btn-outline-secondary"style="width: 50px; height: 50px; margin-right: 30px;" title="Add contrat">
+						<i style="color: yellowgreen; font-size: 25px; " class="fa-sharp fa-solid fa-folder-plus"></i> &nbsp;&nbsp;
+					</a>
+{% endblock btn %}
+
+{% block content %}{% endblock content %}
+{% block main%}
+
+
+
+<table table id="example" class="table table-striped table-bordered" style="width:100%">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Signe</th>
+      <th scope="col">nom</th>
+      <th scope="col">edit</th>
+      <th scope="col">delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for structure in structures %}
+    <tr>
+      <th scope="row">{{structure.id}}</th>
+      <td>{{structure.sigle}}</td>
+      <td>{{structure.nom}}</td>
+      <td>
+        <a href="{% url 'edit_struct' structure.id %}" class="btn btn-success text-center" title="Edit Structure">
+            <i style="font-size: 15px;" class="fas fa-pen"></i>
+        </a>
+    </td>
+    <td>
+        <a class="btn btn-secondary text-center" title="Delete Structure" data-bs-toggle="modal" data-bs-target="#deleteModal{{structure.id}}">
+            <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
+        </a>
+    </td> 
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+{% comment %} {% block pagination%}
+
+<div class="pagination">
+  <span class="step-links">
+      {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+      </span>
+
+      {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+  </span>
+</div>
+{% endblock pagination%} {% endcomment %}
+
+
+{% include 'gestioncontrat/delete_struct.html' %}
+
+  {% endblock main%}
+
+
+

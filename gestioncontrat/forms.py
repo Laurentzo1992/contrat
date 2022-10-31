@@ -1,8 +1,11 @@
 from dataclasses import fields
 from pyexpat import model
 from django import forms
-from gestioncontrat.models import Travail
+from gestioncontrat.models import Travail, Structure, Partenaire, Type
 from django.core.validators import RegexValidator
+
+
+### FORM CONTRAT ###
 
 class TravailForm(forms.ModelForm):
     
@@ -66,21 +69,66 @@ class TravailForm(forms.ModelForm):
         model = Travail
         fields = '__all__'
         
-    # reference = forms.CharField(max_length=10)
-    # objet = forms.CharField()
-    # nature = forms.CharField()
-    # matricule = forms.CharField(max_length=10)
-    # nom = forms.CharField(max_length=60)
-    # prenom = forms.CharField(max_length=80)
-    # montant = forms.FloatField()
-    # duree = forms.CharField(max_length=10)
-    # date_signature = forms.DateField()
-    # date_debut = forms.DateField()
-    # date_fin = forms.DateField()
-    # nombre_renouv = forms.IntegerField()
-    # date_renouvel = forms.DateField()
-    # lieu = forms.CharField(max_length=100)
-    # date_alerte = forms.DateField()
-    # file = forms.FileField()
-    # created_at =forms.DateField()
-    # updated_at = forms.DateField()
+        
+### FORM Structure ###   
+
+class Structureform(forms.ModelForm):
+    
+    sigle = forms.CharField(
+        label='Signle',
+        validators=[RegexValidator(r'^[A-Z0-9]*$',
+        message="Lettre majuscule et chiffre autorisé")],
+        widget=forms.TextInput(attrs={'placeholder': 'Signe'})
+    )
+    
+    nom = forms.CharField(
+        label='Nom',
+        widget=forms.TextInput(attrs={'placeholder': 'Nom'})
+    )
+    
+    class  Meta:
+        model = Structure
+        fields = '__all__'
+        
+        
+### FORM Partenaire ###    
+
+class PartenaireForm(forms.ModelForm):
+
+    email = forms.CharField(
+        label='Signle',
+        validators=[RegexValidator(r'^[A-Z0-9]*$',
+        message="Lettre majuscule et chiffre autorisé")],
+        widget=forms.TextInput(attrs={'placeholder': 'Signe'})
+    )
+    
+    nom = forms.CharField(
+        label='Nom',
+        widget=forms.TextInput(attrs={'placeholder': 'Nom'})
+    )
+    
+    class  Meta:
+        model = Partenaire
+        fields = '__all__'
+        
+
+
+### FORM TYPE CONTRAT ###    
+
+class TypeForm(forms.ModelForm):
+    
+    email = forms.CharField(
+        label='Signle',
+        validators=[RegexValidator(r'^[A-Z0-9]*$',
+        message="Lettre majuscule et chiffre autorisé")],
+        widget=forms.TextInput(attrs={'placeholder': 'Signe'})
+    )
+    
+    nom = forms.CharField(
+        label='Nom',
+        widget=forms.TextInput(attrs={'placeholder': 'Nom'})
+    )
+    
+    class  Meta:
+        model = Type
+        fields = '__all__'

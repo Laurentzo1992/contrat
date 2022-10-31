@@ -1,11 +1,11 @@
+from typing import Type
 from django.contrib import admin
-from gestioncontrat.models import Travail, Financement, Categorie, Structure, Partenaire
-
+from gestioncontrat.models import Travail, Structure, Partenaire, Type
 
 admin.site.register(Travail)
-admin.site.register(Categorie)
 admin.site.register(Partenaire)
 admin.site.register(Structure)
-admin.site.register(Financement)
+admin.site.register(Type)
+
 
 # Register your models here.
