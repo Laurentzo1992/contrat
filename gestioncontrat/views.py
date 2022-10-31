@@ -30,7 +30,7 @@ def add_type(request):
         form = TypeForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "successfully !")
+            messages.success(request, "successfully type contract was added !")
             return redirect('type')
         else:
             return render(request, 'gestioncontrat/add_type.html', {"form":form})
@@ -48,6 +48,7 @@ def edit_type(request, id):
         form = TypeForm(request.POST, instance=type)
         if form.is_valid():
             form.save(id)
+            messages.success(request, "successfully type contract was edited !")
             return redirect('type')
     else:
         form = TypeForm(instance=type)
@@ -107,6 +108,7 @@ def edit_struct(request, id):
         form = Structureform(request.POST, instance=structure)
         if form.is_valid():
             form.save(id)
+            messages.success(request, "successfully type structure was edited !")
             return redirect('structure')
     else:
         form = Structureform(instance=structure)
@@ -168,6 +170,7 @@ def edit_part(request, id):
         form = PartenaireForm(request.POST, instance=partenaire)
         if form.is_valid():
             form.save(id)
+            messages.success(request, "successfully type partenaire was edited !")
             return redirect('partenaire')
     else:
         form = PartenaireForm(instance=partenaire)
@@ -229,6 +232,7 @@ def edit_contrat(request, id):
         form = TravailForm(request.POST,request.FILES, instance=contrat)
         if form.is_valid():
             form.save(id)
+            messages.success(request, "successfully!! contract was edited !")
             return redirect('contrat')
     else:
         form = TravailForm(instance=contrat)
