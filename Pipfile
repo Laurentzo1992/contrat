@@ -20,6 +20,7 @@ requests = "==2.28.1"
 sqlparse = "==0.4.3"
 tzdata = "==2022.5"
 urllib3 = "==1.26.12"
+django-cleanup = "==6.0.0"
 
 [dev-packages]
 
