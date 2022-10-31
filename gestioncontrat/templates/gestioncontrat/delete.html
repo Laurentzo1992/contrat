@@ -1,23 +1,21 @@
-{% extends 'index.html' %}
+{% extends 'gestioncontrat/baseModal.html' %}
 
-{% load crispy_forms_tags %}
-{% load bootstrap_icons %}
-
-{% block content %}{% endblock content %}
-
-{% block main%}
-
+<!--  Modal ID -->
+{% block modal_id %}id="deleteModal{{contrat.pk}}"{% endblock modal_id %}
+<!--  Modal title -->
+{% block modal_title %} 
 <i class="fas fa-trash-alt"></i>&nbsp;&nbsp; Delete Message
-
-
-
+{% endblock modal_title %}
+<!--  Modal Body -->
+{% block modal_body %}
 <div class="text-center text-danger"> <i class="fas fa-times-circle fa-5x mb-4 mt-2" aria-hidden="true"></i></div>
 <div class="text-center text-danger">
-    <span>Do you want to delete this Contract ??? </span>
-    <div class="text-dark mt-3 mb-2">Contrat : <strong>{{contrat.reference}} de M/Mme {{contrat.nom}} {{contrat.prenom}}</strong></div>
+    <span>DO YOU WANT TO DELETE THIS Contrat ??? </span>
+    <div class="text-dark mt-3 mb-2">contrat : <strong>{{contrat.reference}} {{contrat.nom}} {{contrat.prenom}}</strong></div>
 </div>
-
-<a href="/delete/{{contrat.id}}" class="btn btn-outline-danger btn-sm btn-modal">Delete</a>
-
-
-{% endblock main%}
+{% endblock modal_body %}
+<!--  Modal Footer -->
+{% block modal_footer %} 
+<a href="/delete_contrat/{{contrat.id}}" class="btn btn-outline-danger btn-sm btn-modal">Delete</a>
+{% endblock modal_footer %}
+<!--  Modal Close -->

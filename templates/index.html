@@ -23,7 +23,6 @@
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     	<!-- CSS Static file--> 
     	<link rel="stylesheet" href={% static "css/index.css" %}>
-		<link rel="stylesheet" href={% static "css/styles.css" %}>
     	<!-- CSS Datatables -->
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/b-print-2.2.3/datatables.min.css"/>
 	 	<title>clm</title> 
@@ -35,6 +34,7 @@
 		<div class="container-fluid">
 			<div class="row flex-nowrap">
 				<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+
 					<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
 						<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 							<li class="nav-item">
@@ -42,56 +42,57 @@
 									<i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
 								</a>
 							</li>
+
+
 							<li>
 								<a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-									<i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Settings</span> </a>
+									<i class="bi bi-gear"></i><span class="ms-1 d-none d-sm-inline">Settings</span> </a>
 								<ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
 									<li class="w-100">
-										<a href="{% url 'users' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Users</span></a>
+										<a href="{% url 'users' %}" class="nav-link px-0"> <i class="bi bi-person-check-fill"></i><span class="d-none d-sm-inline">Users</span></a>
 									</li>
 									<li>
-										<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Groups</span></a>
+										<a href="#" class="nav-link px-0"> <i class="bi bi-people-fill"></i><span class="d-none d-sm-inline">Groups</span></a>
 									</li>
 								</ul>
 							</li>
+							
 							<li>
-								<a href="#" class="nav-link px-0 align-middle">
-									<i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+								<a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+									<i class="bi bi-journals"></i> <span class="ms-1 d-none d-sm-inline">Général</span> </a>
+								<ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+									<li class="w-100">
+										<a href="{% url 'convention' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Type de contrat</span> </a>
+									</li>
+									<li class="w-100">
+										<a href="{% url 'convention' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Type de convention</span> </a>
+									</li>
+								</ul>
 							</li>
+
+
 							<li>
 								<a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-									<i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Contract</span></a>
+									<i class="bi bi-ui-checks"></i> <span class="ms-1 d-none d-sm-inline">Gestion de Contracts</span></a>
 								<ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
 									<li class="w-100">
-										<a href="{% url 'contrat' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Work contract</span></a>
-									</li>
-									<li>
-										<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span></a>
+										<a href="{% url 'contrat' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Contrat</span></a>
 									</li>
 								</ul>
 							</li>
+
+
 							<li>
 								<a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-									<i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Convention</span> </a>
+									<i class="bi bi-person-lines-fill"></i> <span class="ms-1 d-none d-sm-inline">Gestion de Conventions</span> </a>
 								<ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
 									<li class="w-100">
-										<a href="{% url 'convention' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Patenariat</span> </a>
-									</li>
-									<li>
-										<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"></span> </a>
-									</li>
-									<li>
-										<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Financement</span> </a>
-									</li>
-									<li>
-										<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> </a>
+										<a href="{% url 'convention' %}" class="nav-link px-0"> <span class="d-none d-sm-inline">Convention</span> </a>
 									</li>
 								</ul>
 							</li>
-							<li>
-								<a href="#" class="nav-link px-0 align-middle">
-									<i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-							</li>
+
+
 						</ul>
 						<hr>
 						<div class="dropdown pb-4">
@@ -162,6 +163,21 @@
 						</div>
 					</main>
 
+				{% for message in messages %}
+               <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+               {% if message.tags == 'error' %}
+               <script>
+                     var m = "{{ message }}";
+                     swal("Denied !", "Enter your data correctly.", "error")
+               </script>
+               {% elif message.tags == 'success' %}
+               <script>
+                     var m = "{{ message }}";
+                     swal("Perfect !", m, "success")
+               </script>
+               {% endif %}
+			   
+         {% endfor%}
 					{% endblock main %}
 
 				</div>

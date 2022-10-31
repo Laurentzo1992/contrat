@@ -51,7 +51,7 @@
         </a>
     </td>
     <td>
-        <a href="{% url 'delete_contrat' contrat.id %}" class="btn btn-secondary text-center" title="Delete Contrat">
+        <a class="btn btn-secondary text-center" title="Delete Contrat" data-bs-toggle="modal" data-bs-target="#deleteModal{{contrat.id}}">
             <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
         </a>
     </td> 
@@ -59,6 +59,8 @@
     {% endfor %}
   </tbody>
 </table>
+
+
 
 {% comment %} {% block pagination%}
 
@@ -81,10 +83,10 @@
 </div>
 {% endblock pagination%} {% endcomment %}
 
-{% comment %} {% include 'gestioncontrat/edit.html' %}
-{% include 'gestioncontrat/modals/delete.html' %} {% endcomment %}
 
-</script>
+{% include 'gestioncontrat/delete.html' %}
 
   {% endblock main%}
+
+
 
