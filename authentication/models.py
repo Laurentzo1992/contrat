@@ -3,12 +3,13 @@ from django.db import models
 
 class User(AbstractUser):
     
-    ADMINISTRATEUR = 'ADMINISTRATEUR'
-    USER = 'USER'
-
-    ROLE_CHOICES = (
-        ('ADMINISTRATEUR', 'superadmin'),
-        ('USER', 'user'),
-    )
-    role = models.CharField(max_length=30, choices=ROLE_CHOICES, verbose_name='role')
+    photo = models.ImageField(upload_to='users_img/', null=True, blank=True)
+    
+    @property
+    def fileURL(self):
+        try:
+            url = self.photo.url
+        except:
+            url = ''
+        return url
     

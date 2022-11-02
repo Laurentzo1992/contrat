@@ -7,9 +7,10 @@
 {% comment %} buton to add  {% endcomment %}
 
 
-<a href="{% url 'add-user' %}" class="btn-outline-secondary"style="width: 50px; height: 50px; margin-right: 30px;" title="Add contrat">
+<a href="{% url 'add_user' %}" class="btn-outline-secondary" style="width: 50px; height: 50px; margin-left: 30px;" title="Add user">
   <i style="color: yellowgreen; font-size: 25px; " class="fa-sharp fa-solid fa-folder-plus"></i> &nbsp;&nbsp;
 </a>
+
 	
 
 
@@ -22,8 +23,8 @@
       <th scope="col">Username</th>
       <th scope="col">Compte actif</th>
       <th scope="col">Dernière connexion</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
+      <th scope="col">Photo</th>
+      <th scope="col" style="width: 7%">Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -35,14 +36,15 @@
       <td>{{user_list.is_active}}</td>
       <td>{{user_list.last_login}}</td>
       <td>
-        <a class="btn btn-success text-center" title="Edit Contrat" data-bs-toggle="modal" data-bs-target="#editModal{{contrat.pk}}">
-            <i style="font-size: 15px;" class="fas fa-pen"></i>
-        </a>
-    </td>
-    <td>
-        <a class="btn btn-secondary text-center" title="Delete Contrat" data-bs-toggle="modal" data-bs-target="#deleteModal{{contrat.pk}}">
-            <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
-        </a>
+      <img src="{{user_list.photo.url}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
+      </td>
+      <td>
+        <a href="{% url 'edit_user' user_list.id %}" class="btn btn-success text-center" title="Edit user">
+          <i style="font-size: 15px;" class="fas fa-pen"></i>
+      </a>
+      <a class="btn btn-secondary text-center" title="Delete user" data-bs-toggle="modal" data-bs-target="#deleteModal{{user_list.id}}">
+          <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
+      </a>
     </td> 
     </tr>
     {% endfor %}

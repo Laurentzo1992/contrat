@@ -7,9 +7,9 @@ urlpatterns = [
     path('auth/logout_user', views.Logout_user, name='logout_user'),
     path('auth/profile', views.profile, name='profile'),
     path('home', views.home, name='home'),
-    path('auth/add', views.add, name="add-user"),
-    path('auth/edit/<int:id>', views.edit, name="edit-user"),
-    path('auth/delete/<int:id>', views.delete, name="delete-user"),
+    path('auth/add', views.add_user, name="add_user"),
+    path('auth/edit/<int:id>', views.edit_user, name="edit_user"),
+    path('auth/delete/<int:id>', views.delete_user, name="delete_user"),
     path('auth/users', views.users, name="users"),
     path('auth/statistique', views.statistique, name="statistique"),
     

@@ -89,6 +89,7 @@ class Structureform(forms.ModelForm):
         fields = '__all__'
         
         
+        
 ### FORM Partenaire ###    
 
 class PartenaireForm(forms.ModelForm):

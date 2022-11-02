@@ -3,8 +3,10 @@ from django.shortcuts import render, redirect
 from urllib import request, response
 from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.contrib.auth import  login, logout, authenticate, get_user_model
+from django.contrib.auth.models import Group, Permission
 from  django.contrib import messages
 from authentication.models import User
+from  . import forms
 User = get_user_model()
 from django.contrib.auth.decorators import login_required #Login required
 from  django.views.decorators.cache import cache_control # Destroy the section 
@@ -37,24 +39,12 @@ def Logout_user(request):
     request.user = None
     return HttpResponseRedirect('/')
 
-
 # Page d'acceuil 
 
 def home(request):
     return render(request, 'authentication/home.html')
 
 
-
-#Function to create users
-
-def add(request):
-    return render(request, 'authentication/create.html')
-# Edit user create function
-#@login_required
-def edit(request):
-    return HttpResponseRedirect("users")
-#---------------------------------------------------------------------------
-# Edit user create function
 
 #@login_required
 def delete(request,user_id):
@@ -68,7 +58,7 @@ def users(request):
     user_lists = User.objects.all()
     return render(request, "authentication/list.html", {"user_lists":user_lists})
 
-
+# User  profile function
 def profile(request):
     context = {}
     return render(request, "authentication/profile.html", context)
@@ -78,5 +68,39 @@ def profile(request):
 def statistique(request):
     context = {}
     return render(request, "authentication/statistique.html", context)
+
+
+#Function to create users
+def add_user(request):
+    form = forms.CreateUser()
+    if request.method == 'POST':
+        form = forms.CreateUser(request.POST,request.FILES,)
+        if form.is_valid():
+            form.save()
+            return redirect('list')
+    return render(request, 'authentication/add.html', context={'form':form})
+
+# Edit user edit function
+def edit_user(request, id):
+    user = User.objects.get(id=id)
+    if request.method == 'POST':
+        form = forms.CreateUser(request.POST,request.FILES, instance=user)
+        if form.is_valid():
+            form.save(id)
+            return redirect('list')
+    else:
+        form = forms.CreateUser(instance=user)
+    return render(request, 'authentication/edit.html', {'form':form})
+
+
+
+def delete_user(request,id):
+    user = User.objects.get(id=id)
+    if request.method == 'POST':
+        user.delete()
+        return redirect('list')
+    return render(request, 'authentication/delete.html', {'user':user})
+
+#----------
 
 # Create your views here.
