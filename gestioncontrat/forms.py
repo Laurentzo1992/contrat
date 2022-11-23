@@ -63,6 +63,11 @@ class TravailForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'type': 'date'})
     )
     
+    duree = forms.CharField(
+        label='Durée (en mois)',
+       widget=forms.TextInput(attrs={'placeholder': 'Durée du contrat '})
+    )
+    
     class Meta:
         model = Travail
         fields = '__all__'
@@ -75,7 +80,7 @@ class Structureform(forms.ModelForm):
     sigle = forms.CharField(
         label='Signle',
         validators=[RegexValidator(r'^[A-Z0-9]*$',
-        message="Lettre majuscule et chiffre autorisé")],
+        message="Lettre majuscule et chiffre autorisé sans espace")],
         widget=forms.TextInput(attrs={'placeholder': 'Signe'})
     )
     

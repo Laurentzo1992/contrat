@@ -1,9 +1,17 @@
 from django.db import models
-from gestioncontrat.models import Type, Partenaire, Structure
+from gestioncontrat.models import Partenaire, Structure
+
+
+class TypeConvention(models.Model):
+    libelle = models.CharField(max_length=70, null=True, blank=True)
+
+    def __str__(self):
+        return self.libelle
+    
 
 class Convention(models.Model):
     
-    type = models.ForeignKey(Type, on_delete=models.CASCADE, null=True, blank=True)
+    type = models.ForeignKey(TypeConvention, on_delete=models.CASCADE, null=True, blank=True)
     partenaire = models.ForeignKey(Partenaire, on_delete=models.CASCADE, null=True, blank=True)
     structure = models.ForeignKey(Structure, on_delete=models.CASCADE, null=True, blank=True)
     reference = models.CharField(max_length=10)
@@ -32,4 +40,7 @@ class Convention(models.Model):
             url = ''
         return url
     
+    
+    
+
 # Create your models here.

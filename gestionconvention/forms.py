@@ -1,5 +1,5 @@
 from django import forms
-from gestionconvention.models import Convention
+from gestionconvention.models import Convention, TypeConvention
 from django.core.validators import RegexValidator
 
 
@@ -46,4 +46,16 @@ class ConventionForm(forms.ModelForm):
     
     class Meta:
         model = Convention
+        fields = '__all__'
+        
+        
+class TypeConventionForm(forms.ModelForm):
+    
+    libelle = forms.CharField(
+        label='Libele',
+        widget=forms.TextInput(attrs={'placeholder': 'Libele'})
+    )
+    
+    class  Meta:
+        model = TypeConvention
         fields = '__all__'
