@@ -81,7 +81,7 @@ def edit_type_con(request, id):
             messages.success(request, "successfully type Convention was edited !")
             return redirect('type_con')
     else:
-        form = TypeConventionForm(instance=type)
+        form = TypeConventionForm(instance=type_conv)
     return render(request, 'gestionconvention/edit_type_con.html', {'form':form})
 
 
