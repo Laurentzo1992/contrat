@@ -249,3 +249,10 @@ li a span:last-child {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
+
+/* Crispy form customuization*/
+
+.asteriskField {
+    color: blue;
+}

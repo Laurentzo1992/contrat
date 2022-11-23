@@ -6,6 +6,8 @@ from django.contrib.auth import  login, logout, authenticate, get_user_model
 from django.contrib.auth.models import Group, Permission
 from  django.contrib import messages
 from authentication.models import User
+from gestioncontrat.models import Travail
+from gestionconvention.models import Convention
 from  . import forms
 User = get_user_model()
 from django.contrib.auth.decorators import login_required #Login required
@@ -42,7 +44,9 @@ def Logout_user(request):
 # Page d'acceuil 
 
 def home(request):
-    return render(request, 'authentication/home.html')
+    contrats = Travail.objects.count()
+    conventions = Convention.objects.count()
+    return render(request, 'authentication/home.html', {"contrats":contrats, "conventions":conventions})
 
 
 

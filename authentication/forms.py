@@ -22,6 +22,7 @@ class CreateUser(UserCreationForm):
     user_permissions = forms.TextInput(
     )
     
+   
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
         fields = '__all__'

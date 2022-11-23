@@ -1,2 +1,50 @@
 {% extends 'index.html' %}
 
+{% block main%}
+
+<main>
+	
+    <div class="cards">
+
+        <div class="card-single">
+            <div>
+                <h2>{{contrats}}</h2>
+                <small>Nombre de contract</small>
+            </div>
+            <div>
+                <span class="fa-solid fa-file-signature"></span>
+            </div>
+        </div>
+        <div class="card-single">
+            <div>
+                <h2>{{conventions}}</h2>
+                <small>Nombre de convention</small>
+            </div>
+            <div>
+                <span class="fa-solid fa-people-arrows"></span>
+            </div>
+        </div>
+        <div class="card-single">
+            <div>
+                <h2>{{contrats}}</h2>
+                <small>Echeance expiré</small>
+            </div>
+            <div>
+                <span class="fa-solid fa-outdent"></span>
+            </div>
+        </div>
+        <div class="card-single">
+            <div>
+                <h2>{{contrats}}</h2>
+                <small>Contrats Archivé </small>
+            </div>
+            <div>
+            <span class="fa-solid fa-users"></span>
+            </div>
+        </div>
+    </div>
+</main>  
+
+
+{% endblock main%}
+
