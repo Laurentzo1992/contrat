@@ -10,7 +10,7 @@
            
    <div class="container mt-3" style="width: 95%; font-size: 14px">
       
-      <form method="POST" autocomplete="off" enctype="multipart/form-data"> 
+      <form method="POST" autocomplete="off" enctype="multipart/form-data" style="background-color: #5F9EA0;"> 
             {% csrf_token %}
 
             {% comment %} {% bootstrap_form form %} {% endcomment %}
@@ -51,7 +51,7 @@
 
          <div class="mt-4" style="width: 100p%;">
             <button style= "font-size: 15px;" type="submit" class="btn btn-success mb-3">
-            <i class="fas fa-plus"></i>&nbsp;&nbsp; Add Contrat
+            <i class="fas fa-plus"></i>&nbsp;&nbsp; Valider
             </button>
             <a style= "font-size: 15px;" href="{% url 'contrat' %}" type="button" class="btn btn-outline-danger mb-3 ms-2" style="wdith: 50px;" title="Close">
                   <i class="fas fa-times"></i>
