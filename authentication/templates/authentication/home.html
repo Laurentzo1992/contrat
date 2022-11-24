@@ -43,6 +43,33 @@
             </div>
         </div>
     </div>
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [{% for cont in conts %} '{{cont.type}}', {% endfor %}],
+            datasets: [{
+              label: 'Nombre des Contrats de stage',
+              data: [{% for cont in conts %} {{type_nmber}}, {% endfor %}],
+              borderWidth: 2
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
 </main>  
 
 

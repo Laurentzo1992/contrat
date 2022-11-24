@@ -45,8 +45,10 @@ def Logout_user(request):
 
 def home(request):
     contrats = Travail.objects.count()
+    conts = Travail.objects.all()
+    type_nmber = Travail.objects.count()
     conventions = Convention.objects.count()
-    return render(request, 'authentication/home.html', {"contrats":contrats, "conventions":conventions})
+    return render(request, 'authentication/home.html', {"contrats":contrats, "conventions":conventions, "conts":conts, "type_nmber":type_nmber})
 
 
 
