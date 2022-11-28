@@ -6,12 +6,13 @@ from django.contrib.auth import  login, logout, authenticate, get_user_model
 from django.contrib.auth.models import Group, Permission
 from  django.contrib import messages
 from authentication.models import User
-from gestioncontrat.models import Travail
+from gestioncontrat.models import Travail, Type
 from gestionconvention.models import Convention
 from  . import forms
 User = get_user_model()
 from django.contrib.auth.decorators import login_required #Login required
-from  django.views.decorators.cache import cache_control # Destroy the section 
+from  django.views.decorators.cache import cache_control # Destroy the section
+from django.db.models import  Count
 
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -44,11 +45,13 @@ def Logout_user(request):
 # Page d'acceuil 
 
 def home(request):
-    contrats = Travail.objects.count()
     conts = Travail.objects.all()
-    type_nmber = Travail.objects.count()
-    conventions = Convention.objects.count()
-    return render(request, 'authentication/home.html', {"contrats":contrats, "conventions":conventions, "conts":conts, "type_nmber":type_nmber})
+    contrats = conts.count()
+    convents = Convention.objects.all()
+    conventions = convents.count()
+    results = (Travail.objects.values('type').annotate(dcount=Count('type')).order_by('type'))
+    context = {"contrats":contrats, "conventions":conventions, "conts":conts, "convents":convents, "results":results}
+    return render(request, 'authentication/home.html',context )
 
 
 
