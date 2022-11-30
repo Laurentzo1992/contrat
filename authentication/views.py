@@ -6,7 +6,7 @@ from django.contrib.auth import  login, logout, authenticate, get_user_model
 from django.contrib.auth.models import Group, Permission
 from  django.contrib import messages
 from authentication.models import User
-from gestioncontrat.models import Travail, Type
+from gestioncontrat.models import Travail
 from gestionconvention.models import Convention
 from  . import forms
 User = get_user_model()
@@ -49,8 +49,9 @@ def home(request):
     contrats = conts.count()
     convents = Convention.objects.all()
     conventions = convents.count()
-    results = (Travail.objects.values('type').annotate(dcount=Count('type')).order_by('type'))
-    context = {"contrats":contrats, "conventions":conventions, "conts":conts, "convents":convents, "results":results}
+    results = (Travail.objects.values('type').annotate(dcount=Count('type')).order_by('dcount'))
+    results_conv = (Convention.objects.values('type').annotate(c_count=Count('type')).order_by('c_count'))
+    context = {"contrats":contrats, "conventions":conventions, "conts":conts, "convents":convents, "results":results, "results_conv":results_conv}
     return render(request, 'authentication/home.html',context )
 
 

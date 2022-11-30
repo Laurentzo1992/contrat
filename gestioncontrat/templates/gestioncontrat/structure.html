@@ -29,10 +29,10 @@
       <td>{{structure.sigle}}</td>
       <td>{{structure.nom}}</td>
       <td>
-        <a href="{% url 'edit_struct' structure.id %}" class="btn btn-success text-center" title="Edit Structure">
+        <a href="{% url 'edit_struct' structure.id %}" class="btn btn-success text-center bg-warning" title="Edit Structure">
             <i style="font-size: 15px;" class="fas fa-pen"></i>
         </a>
-        <a class="btn btn-secondary text-center" title="Delete Structure" data-bs-toggle="modal" data-bs-target="#deleteModal{{structure.id}}">
+        <a class="btn btn-secondary text-center bg-danger" title="Delete Structure" data-bs-toggle="modal" data-bs-target="#deleteModal{{structure.id}}">
             <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
         </a>
     </td> 

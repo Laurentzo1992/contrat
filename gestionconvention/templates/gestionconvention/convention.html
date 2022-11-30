@@ -38,10 +38,10 @@
         <a href ="{{convention.file.url}}" title="Lire le fichier">
             <i style="font-size: 25px; color: green" class="fa-solid fa-file-pdf"></i>
         </a>
-        <a href="{% url 'convention_edit' convention.id %}" class="btn btn-success text-center" title="Edit Convention">
+        <a href="{% url 'convention_edit' convention.id %}" class="btn btn-success text-center bg-warning" title="Edit Convention">
             <i style="font-size: 15px;" class="fas fa-pen"></i>
         </a>
-        <a class="btn btn-secondary text-center" title="Delete Convention" data-bs-toggle="modal" data-bs-target="#deleteModal{{convention.id}}">
+        <a class="btn btn-secondary text-center bg-danger" title="Delete Convention" data-bs-toggle="modal" data-bs-target="#deleteModal{{convention.id}}">
             <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
         </a>
       </td> 

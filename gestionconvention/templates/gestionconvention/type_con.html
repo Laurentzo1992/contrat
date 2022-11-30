@@ -26,10 +26,10 @@
       <th scope="row">{{types_conv.id}}</th>
       <td>{{types_conv.libelle}}</td>
       <td>
-        <a href="{% url 'edit_type_con' types_conv.id %}" class="btn btn-success text-center" title="Edit Type">
+        <a href="{% url 'edit_type_con' types_conv.id %}" class="btn btn-success text-center bg-warning" title="Edit Type">
             <i style="font-size: 15px;" class="fas fa-pen"></i>
         </a>
-        <a class="btn btn-secondary text-center" title="Delete Type" data-bs-toggle="modal" data-bs-target="#deleteModal{{types_conv.id}}">
+        <a class="btn btn-secondary text-center bg-danger" title="Delete Type" data-bs-toggle="modal" data-bs-target="#deleteModal{{types_conv.id}}">
             <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
         </a>
     </td> 

@@ -43,14 +43,15 @@
         <a href ="{{contrat.file.url}}" title="Lire le fichier">
             <i style="font-size: 25px; color: green" class="fa-solid fa-file-pdf"></i>
         </a>
-        <a href="{% url 'edit_contrat' contrat.id %}" class="btn btn-success text-center" title="Edit Contrat">
+        <a href="{% url 'edit_contrat' contrat.id %}" class="btn btn-warning bg-warning text-center" title="Edit Contrat">
             <i style="font-size: 15px;" class="fas fa-pen"></i>
         </a>
-        <a class="btn btn-secondary text-center" title="Delete Contrat" data-bs-toggle="modal" data-bs-target="#deleteModal{{contrat.id}}">
-            <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
-        </a>
+        <button type="button" class="btn btn-danger bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{contrat.pk}}">
+          <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
+        </button>
       </td> 
     </tr>
+    {% include 'gestioncontrat/delete.html' %}
     {% endfor %}
   </tbody>
 </table>
@@ -83,7 +84,6 @@
 {% endblock pagination%} {% endcomment %}
 
 
-{% include 'gestioncontrat/delete.html' %}
 
 
 {% for message in messages %}

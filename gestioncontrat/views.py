@@ -245,7 +245,7 @@ def edit_contrat(request, id):
 
 
 def delete_contrat(request, id):
-    contrat = Travail.objects.get(id = id)
+    contrat = Travail.objects.get(id=id)
     contrat.delete()
     messages.success(request, 'Contrat deleted successfully !')
     return HttpResponseRedirect("contrat")
