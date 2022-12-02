@@ -49,9 +49,11 @@ def home(request):
     contrats = conts.count()
     convents = Convention.objects.all()
     conventions = convents.count()
+    users = User.objects.all()
+    users = users.count()
     results = (Travail.objects.values('type').annotate(dcount=Count('type')).order_by('dcount'))
     results_conv = (Convention.objects.values('type').annotate(c_count=Count('type')).order_by('c_count'))
-    context = {"contrats":contrats, "conventions":conventions, "conts":conts, "convents":convents, "results":results, "results_conv":results_conv}
+    context = {"contrats":contrats, "conventions":conventions, "conts":conts, "convents":convents, "results":results, "results_conv":results_conv, "users":users}
     return render(request, 'authentication/home.html',context )
 
 
