@@ -60,10 +60,12 @@ def edit_type(request, id):
 ############################################ 
 
 def delete_type(request, id):
-    type = Type.objects.get(id = id)
-    type.delete()
-    messages.success(request, 'Type deleted successfully !')
-    return HttpResponseRedirect("type")
+    type = Type.objects.get(id=id)
+    if request.method=='POST':
+        type.delete()
+        messages.success(request, 'Type deleted successfully !')
+        return redirect("type")
+    return render(request, 'gestioncontrat/delete_type.html', {"type":type})
 
 
 
@@ -121,10 +123,12 @@ def edit_struct(request, id):
 
 
 def delete_struct(request, id):
-    structure = Structure.objects.get(id = id)
-    contrat.delete()
-    messages.success(request, 'Structure deleted successfully !')
-    return HttpResponseRedirect("structure")
+    structure = Structure.objects.get(id=id)
+    if request.method=='POST':
+        structure.delete()
+        messages.success(request, 'Structure deleted successfully !')
+        return redirect("structure")
+    return render(request, 'gestioncontrat/delete_struct.html', {"structure":structure})
 
 
 #############################################################################
@@ -182,10 +186,12 @@ def edit_part(request, id):
 ############################################ 
 
 def delete_part(request, id):
-    partenaire = Partenaire.objects.get(id = id)
-    partenaire.delete()
-    messages.success(request, 'Partenaire deleted successfully !')
-    return HttpResponseRedirect("partenaire")
+    partenaire = Partenaire.objects.get(id=id)
+    if request.method=='POST':
+        partenaire.delete()
+        messages.success(request, 'Partenaire deleted successfully !')
+        return redirect("partenaire")
+    return render(request, 'gestioncontrat/delete_part.html', {"partenaire":partenaire})
 
 
 ######################################################################################
@@ -246,9 +252,11 @@ def edit_contrat(request, id):
 
 def delete_contrat(request, id):
     contrat = Travail.objects.get(id=id)
-    contrat.delete()
-    messages.success(request, 'Contrat deleted successfully !')
-    return HttpResponseRedirect("contrat")
+    if request.method=='POST':
+        contrat.delete()
+        messages.success(request, 'Contrat deleted successfully !')
+        return redirect("contrat")
+    return render(request, 'gestioncontrat/delete.html', {"contrat":contrat})
 
 
 # Create your views here.

@@ -28,6 +28,8 @@
 		<!-- script chart js  -->
 		<!-- Script chart js script --> 
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script src={% static "js/htmx.min.js" %}></script>
+		<script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
 		<title>clm</title> 
 </head>
 <body>
@@ -100,10 +102,7 @@
 									</li>
 								</ul>
 							</li>
-
-
 						</ul>
-						<hr>
 						<div class="dropdown pb-4">
 							<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 								{% if request.user.photo.url %}
@@ -149,6 +148,10 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/b-print-2.2.3/datatables.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script> 
+	<script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
+	<script src={% static "js/htmx.min.js" %}></script>
+
 	
 
 

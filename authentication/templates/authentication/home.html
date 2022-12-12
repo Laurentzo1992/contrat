@@ -44,17 +44,37 @@
         </div>
     </div>
 
-    <div class="mt-5">
-        <canvas id="myChart"></canvas>
+
+    
+    <div class="row p-5">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="mt-5 chart-container">
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="w-50 mt-5">
+              <canvas id="myChart1"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
+    
     <script>
         const ctx = document.getElementById('myChart');
       
         new Chart(ctx, {
           type: 'bar',
           data: {
-            labels: [{% for cont in conts %} '{{cont.type}}', {% endfor %}],
+            labels: [{% for cont in conts %} '{{cont.type.libelle}}', {% endfor %}],
             datasets: [{
               label: 'Contrats',
               data: [{% for result in results %} {{result.dcount}}, {% endfor %}],
@@ -87,17 +107,15 @@
         });
       </script>
 
-      <div class="w-50 mt-5">
-        <canvas id="myChart1"></canvas>
-    </div>
+      
 
       <script>
         const ctx1 = document.getElementById('myChart1');
       
         new Chart(ctx1, {
-          type: 'doughnut',
+          type: 'pie',
           data: {
-            labels: [{% for results_con in results_conv %} '{{results_con.type.libelle}}', {% endfor %}],
+            labels: [{% for convent in convents %} '{{convent.type.libelle}}', {% endfor %}],
             datasets: [{
               label: 'Contrats',
               data: [{% for results_con in results_conv %} {{results_con.c_count}}, {% endfor %}],

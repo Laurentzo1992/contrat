@@ -43,9 +43,11 @@ def convention_edit(request, id):
 
 def convention_delete(request, id):
     convention = Convention.objects.get(id = id)
-    convention.delete()
-    messages.success(request, 'Convention deleted successfully !')
-    return HttpResponseRedirect("convention")
+    if request.method=='POST':
+        convention.delete()
+        messages.success(request, 'Convention deleted successfully !')
+        return redirect("convention")
+    return render(request, 'gestionconvention/convention_delete.html', {"convention":convention})
 
 
 
@@ -91,9 +93,12 @@ def edit_type_con(request, id):
 
 def delete_type_con(request, id):
     type_conv = TypeConvention.objects.get(id = id)
-    type_conv.delete()
-    messages.success(request, 'Type Convention deleted successfully !')
-    return HttpResponseRedirect("type_con")
+    if request.method=='POST':
+        type_conv.delete()
+        messages.success(request, 'Type_convention deleted successfully !')
+        return redirect("type_con")
+    return render(request, 'gestionconvention/delete_type_con.html', {"type_conv":type_conv})
+
 
 
 # Create your views here.

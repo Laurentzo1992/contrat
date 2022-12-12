@@ -29,17 +29,14 @@
         <a href="{% url 'edit_type' type.id %}" class="btn btn-success text-center bg-warning" title="Edit Type">
             <i style="font-size: 15px;" class="fas fa-pen"></i>
         </a>
-        <a class="btn btn-secondary text-center bg-danger" title="Delete Type" data-bs-toggle="modal" data-bs-target="#deleteModal{{type.id}}">
-            <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
+        <a href="{% url 'delete_type' type.id %}" class="btn btn-danger bg-danger text-center" title="Supprimer Type">
+          <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
         </a>
     </td> 
     </tr>
     {% endfor %}
   </tbody>
 </table>
-
-
-{% include 'gestioncontrat/delete_type.html' %}
 
 
 {% for message in messages %}

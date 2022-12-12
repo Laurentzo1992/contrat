@@ -33,17 +33,21 @@
     <tr>
       <th scope="row">{{user_list.id}}</th>
       <td>{{user_list.username}}</td>
-      <td>{{user_list.is_active}}</td>
+      {% if request.user.is_active %}
+      <td>Oui</td>
+      {% else%}
+      <td>Non</td>
+       {% endif %}
       <td>{{user_list.last_login}}</td>
       <td>
       <img src="{{user_list.photo.url}}" alt="hugenerd" width="30" height="30" class="rounded-circle">
       </td>
       <td>
-        <a href="{% url 'edit_user' user_list.id %}" class="btn btn-success text-center" title="Edit user">
+        <a href="{% url 'edit_user' user_list.id %}" class="btn btn-warning bg-warning text-center" title="Edit user">
           <i style="font-size: 15px;" class="fas fa-pen"></i>
       </a>
-      <a class="btn btn-secondary text-center" title="Delete user" data-bs-toggle="modal" data-bs-target="#deleteModal{{user_list.id}}">
-          <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
+      <a href="{% url 'delete_user' user_list.id %}" class="btn btn-danger bg-danger text-center" title="Supprimer user">
+        <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
       </a>
     </td> 
     </tr>

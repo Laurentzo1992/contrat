@@ -36,8 +36,8 @@
         <a href="{% url 'edit_part' partenaire.id %}" class="btn btn-success text-center bg-warning" title="Edit Partenaire">
             <i style="font-size: 15px;" class="fas fa-pen"></i>
         </a>
-        <a class="btn btn-secondary text-center bg-danger" title="Delete Partenaire" data-bs-toggle="modal" data-bs-target="#deleteModal{{partenaire.id}}">
-            <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
+        <a href="{% url 'delete_part' partenaire.id %}" class="btn btn-danger bg-danger text-center" title="Supprimer partenaire">
+          <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
         </a>
     </td> 
     </tr>
@@ -67,10 +67,6 @@
   </span>
 </div>
 {% endblock pagination%} {% endcomment %}
-
-
-{% include 'gestioncontrat/delete_part.html' %}
-
 
 {% for message in messages %}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -46,12 +46,11 @@
         <a href="{% url 'edit_contrat' contrat.id %}" class="btn btn-warning bg-warning text-center" title="Edit Contrat">
             <i style="font-size: 15px;" class="fas fa-pen"></i>
         </a>
-        <button type="button" class="btn btn-danger bg-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{contrat.pk}}">
+        <a href="{% url 'delete_contrat' contrat.id %}" class="btn btn-danger bg-danger text-center" title="Supprimer Contrat">
           <i style="font-size: 15px;" class="fas fa-trash-alt"></i>
-        </button>
+        </a>
       </td> 
     </tr>
-    {% include 'gestioncontrat/delete.html' %}
     {% endfor %}
   </tbody>
 </table>
