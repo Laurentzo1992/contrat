@@ -76,7 +76,7 @@
           data: {
             labels: [{% for cont in conts %} '{{cont.type.libelle}}', {% endfor %}],
             datasets: [{
-              label: 'Contrats',
+              label: '',
               data: [{% for result in results %} {{result.dcount}}, {% endfor %}],
               backgroundColor: [
                 'rgba(255, 99, 132, 0.9)',
@@ -117,7 +117,7 @@
           data: {
             labels: [{% for convent in convents %} '{{convent.type.libelle}}', {% endfor %}],
             datasets: [{
-              label: 'Contrats',
+              label: '',
               data: [{% for results_con in results_conv %} {{results_con.c_count}}, {% endfor %}],
               backgroundColor: [
                 'rgba(255, 99, 132, 0.8)',

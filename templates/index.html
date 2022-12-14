@@ -103,6 +103,7 @@
 								</ul>
 							</li>
 						</ul>
+						
 						<div class="dropdown pb-4">
 							<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 								{% if request.user.photo.url %}
@@ -110,7 +111,7 @@
 								{% else %}
 								<img src="{% static 'images/users_img/users.png' %}" alt="hugenerd" width="30" height="30" class="rounded-circle">
 								{% endif %}
-								<span class="d-none d-sm-inline mx-1">{{request.user}}</span>
+								<span class="d-none d-sm-inline mx-1">{% if user.is_authenticated %} {{request.user}} {% else %} <span>Please log in.</span> {% endif %}</span>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
 								<li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
@@ -123,11 +124,11 @@
 					</div>
 				</div>
 				<div class="col py-3">
-
-				
-					<div class="row m-sm-4">
-						{% block btn %}{% endblock btn %}
-					</div>
+					
+					{% block btn %}
+					
+					{% endblock btn %}
+					
 
 				
 				<!---------------Contenu principal------------------------>

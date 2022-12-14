@@ -30,7 +30,8 @@ def add_type(request):
         form = TypeForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "successfully type contract was added !")
+            cont_type = form.cleaned_data.get('libelle')
+            messages.success(request, f"successfully {cont_type} was added !")
             return redirect('type')
         else:
             return render(request, 'gestioncontrat/add_type.html', {"form":form})
@@ -48,7 +49,7 @@ def edit_type(request, id):
         form = TypeForm(request.POST, instance=type)
         if form.is_valid():
             form.save(id)
-            messages.success(request, "successfully type contract was edited !")
+            messages.success(request, f"successfully {type.libelle} was edited !")
             return redirect('type')
     else:
         form = TypeForm(instance=type)
@@ -63,7 +64,7 @@ def delete_type(request, id):
     type = Type.objects.get(id=id)
     if request.method=='POST':
         type.delete()
-        messages.success(request, 'Type deleted successfully !')
+        messages.success(request, f'{type.libelle} deleted successfully !')
         return redirect("type")
     return render(request, 'gestioncontrat/delete_type.html', {"type":type})
 
@@ -92,7 +93,8 @@ def add_struct(request):
         form = Structureform(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Structure added successfully !")
+            struc = form.cleaned_data.get('nom')
+            messages.success(request, f"{struc} added successfully !")
             return redirect('structure')
         else:
             return render(request, 'gestioncontrat/add_struct.html', {"form":form})
@@ -110,7 +112,7 @@ def edit_struct(request, id):
         form = Structureform(request.POST, instance=structure)
         if form.is_valid():
             form.save(id)
-            messages.success(request, "successfully type structure was edited !")
+            messages.success(request, f"successfully {structure.nom} was edited !")
             return redirect('structure')
     else:
         form = Structureform(instance=structure)
@@ -126,7 +128,7 @@ def delete_struct(request, id):
     structure = Structure.objects.get(id=id)
     if request.method=='POST':
         structure.delete()
-        messages.success(request, 'Structure deleted successfully !')
+        messages.success(request, f'{structure.nom} deleted successfully !')
         return redirect("structure")
     return render(request, 'gestioncontrat/delete_struct.html', {"structure":structure})
 
@@ -156,7 +158,8 @@ def add_part(request):
         form = PartenaireForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Partenaire added successfully !")
+            part = form.cleaned_data.get('nom')
+            messages.success(request, f"{part} added successfully !")
             return redirect('partenaire')
         else:
             return render(request, 'gestioncontrat/add_part.html', {"form":form})
@@ -174,7 +177,7 @@ def edit_part(request, id):
         form = PartenaireForm(request.POST, instance=partenaire)
         if form.is_valid():
             form.save(id)
-            messages.success(request, "successfully type partenaire was edited !")
+            messages.success(request, f"successfully {{partenaire.nom}} was edited !")
             return redirect('partenaire')
     else:
         form = PartenaireForm(instance=partenaire)
@@ -189,7 +192,7 @@ def delete_part(request, id):
     partenaire = Partenaire.objects.get(id=id)
     if request.method=='POST':
         partenaire.delete()
-        messages.success(request, 'Partenaire deleted successfully !')
+        messages.success(request, f'{partenaire.nom} deleted successfully !')
         return redirect("partenaire")
     return render(request, 'gestioncontrat/delete_part.html', {"partenaire":partenaire})
 
@@ -219,7 +222,8 @@ def add_contrat(request):
         form = TravailForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, "Contrat added successfully !")
+            cont = form.cleaned_data.get('reference')
+            messages.success(request, f"{cont} added successfully !")
             return HttpResponseRedirect('contrat')
         else:
             return render(request, 'gestioncontrat/add.html', {"form":form})
@@ -238,7 +242,7 @@ def edit_contrat(request, id):
         form = TravailForm(request.POST,request.FILES, instance=contrat)
         if form.is_valid():
             form.save(id)
-            messages.success(request, "successfully!! contract was edited !")
+            messages.success(request, f"successfully!! {contrat.reference} was edited !")
             return redirect('contrat')
     else:
         form = TravailForm(instance=contrat)
@@ -254,7 +258,7 @@ def delete_contrat(request, id):
     contrat = Travail.objects.get(id=id)
     if request.method=='POST':
         contrat.delete()
-        messages.success(request, 'Contrat deleted successfully !')
+        messages.success(request, f'{contrat.reference} deleted successfully !')
         return redirect("contrat")
     return render(request, 'gestioncontrat/delete.html', {"contrat":contrat})
 

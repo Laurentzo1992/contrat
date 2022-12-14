@@ -19,7 +19,8 @@ def convention_add(request):
         form = ConventionForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, "Convention added successfully !")
+            conv_ref = form.cleaned_data.get('reference')
+            messages.success(request, f"convention {conv_ref} added successfully !")
             return redirect('convention')
         else:
             return render(request, 'gestionconvention/add.html', {"form":form})
@@ -34,7 +35,7 @@ def convention_edit(request, id):
         form = ConventionForm(request.POST,request.FILES, instance=convention)
         if form.is_valid():
             form.save(id)
-            messages.success(request, "successfully!! convention was edited !")
+            messages.success(request, f"successfully!! {convention.reference} was edited !")
             return redirect('convention')
     else:
         form = ConventionForm(instance=convention)
@@ -45,7 +46,7 @@ def convention_delete(request, id):
     convention = Convention.objects.get(id = id)
     if request.method=='POST':
         convention.delete()
-        messages.success(request, 'Convention deleted successfully !')
+        messages.success(request, f'{convention.reference} deleted successfully !')
         return redirect("convention")
     return render(request, 'gestionconvention/convention_delete.html', {"convention":convention})
 
@@ -62,7 +63,8 @@ def add_type_con(request):
         form = TypeConventionForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "successfully type convention was added !")
+            type_conv = form.cleaned_data.get('libelle')
+            messages.success(request, f"successfully {type_conv} was added !")
             return redirect('type_con')
         else:
             return render(request, 'gestionconvention/add_type_conv.html', {"form":form})
@@ -80,7 +82,7 @@ def edit_type_con(request, id):
         form = TypeConventionForm(request.POST, instance=type_conv)
         if form.is_valid():
             form.save(id)
-            messages.success(request, "successfully type Convention was edited !")
+            messages.success(request, f"successfully {type_conv.libelle} was edited !")
             return redirect('type_con')
     else:
         form = TypeConventionForm(instance=type_conv)
@@ -95,7 +97,7 @@ def delete_type_con(request, id):
     type_conv = TypeConvention.objects.get(id = id)
     if request.method=='POST':
         type_conv.delete()
-        messages.success(request, 'Type_convention deleted successfully !')
+        messages.success(request, f'{type_conv.libelle} deleted successfully !')
         return redirect("type_con")
     return render(request, 'gestionconvention/delete_type_con.html', {"type_conv":type_conv})
 
