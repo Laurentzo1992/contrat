@@ -59,6 +59,7 @@ class Travail(models.Model):
     lieu = models.CharField(max_length=100, null=True, blank=True)
     date_alerte = models.DateField()
     file = models.FileField(upload_to='uploads_files/', null=True, blank=True)
+    archive =models.BooleanField(default=False, null=True)
     created_at =models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     

@@ -25,6 +25,7 @@ class Convention(models.Model):
     date_renouvel = models.DateField(null=True, blank=True)
     date_alerte = models.DateField(null=True, blank=True)
     file = models.FileField(upload_to='uploads_files/', null=True, blank=True)
+    archive =models.BooleanField(default=False, null=True)
     created_at =models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     

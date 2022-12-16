@@ -263,4 +263,18 @@ def delete_contrat(request, id):
     return render(request, 'gestioncontrat/delete.html', {"contrat":contrat})
 
 
+
+####################### Archive contrat ###########################
+
+def archive(request, id):
+    contrat = Travail.objects.get(id=id)
+    if request.method == 'POST':
+        form = TravailForm(request.POST,request.FILES, instance=contrat)
+        if form.is_valid():
+            form.save(id)
+            messages.success(request, f"successfully!! {contrat.reference} was archived !")
+            return redirect('contrat')
+    else:
+        form = TravailForm(instance=contrat)
+    return render(request, 'gestioncontrat/archive.html', {'form':form})
 # Create your views here.

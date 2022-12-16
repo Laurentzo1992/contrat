@@ -18,7 +18,7 @@
       <th scope="col">ID</th>
       <th scope="col">Reference</th>
       <th scope="col">Object</th>
-      <th scope="col">Nature</th>
+      <th scope="col">Archivé</th>
       <th scope="col">signature</th>
       <th scope="col">fin</th>
       <th scope="col">Lieu</th>
@@ -32,16 +32,25 @@
     {% for contrat in contrats %}
     <tr>
       <th scope="row">{{contrat.id}}</th>
-      <td>{{contrat.reference}}</td>
+      <td>{{contrat.reference}}&nbsp;&nbsp;
+        <a href="{% url 'archive' contrat.id %}" title="Archiver">
+            <i class="fa-solid fa-file-zipper" style="color: red;"></i>
+        </a>
+      </td>
+
       <td>{{contrat.objet}}</td>
-      <td>{{contrat.nature}}</td>
+      {% if contrat.archive %}
+      <td>Oui &nbsp;&nbsp; <i style="color: green;" class="fas fa-check-circle"></i>&nbsp;&nbsp; Archiver</td>
+      {% else %}
+      <td>Non &nbsp;&nbsp; Archiver</td>
+      {% endif %}
       <td>{{contrat.date_signature}}</td>
       <td>{{contrat.date_fin}}</td>
       <td>{{contrat.lieu}}</td>
       <td>{{contrat.date_alerte}}</td>
       <td>
         <a href ="{{contrat.file.url}}" title="Lire le fichier">
-            <i style="font-size: 25px; color: green" class="fa-solid fa-file-pdf"></i>
+            <i style="font-size: 25px; color: green; text-decoration-style: none;" class="fa-solid fa-file-pdf"></i>
         </a>
         <a href="{% url 'edit_contrat' contrat.id %}" class="btn btn-warning bg-warning text-center" title="Edit Contrat">
             <i style="font-size: 15px;" class="fas fa-pen"></i>

@@ -47,13 +47,14 @@ def Logout_user(request):
 def home(request):
     conts = Travail.objects.all()
     contrats = conts.count()
+    cont_archs = Travail.objects.filter(archive=True).count()
     convents = Convention.objects.all()
     conventions = convents.count()
     users = User.objects.all()
     users = users.count()
     results = conts.values('type').annotate(dcount=Count('type')).order_by('dcount')
     results_conv = convents.values('type').annotate(c_count=Count('type')).order_by('c_count')
-    context = {"contrats":contrats, "conventions":conventions, "conts":conts, "convents":convents, "results":results, "results_conv":results_conv, "users":users}
+    context = {"contrats":contrats, "conventions":conventions, "conts":conts, "convents":convents, "results":results, "results_conv":results_conv, "users":users, "cont_archs":cont_archs}
     return render(request, 'authentication/home.html',context )
 
 
@@ -72,7 +73,15 @@ def users(request):
 
 # User  profile function
 def profile(request):
-    context = {}
+    user = User.objects.get(id=request.user.pk)
+    context = {"user":user}
+    if request.method == 'POST':
+        form = forms.CreateUser(request.POST,request.FILES, instance=user)
+        if form.is_valid():
+            form.save(id)
+            return redirect('profile')
+    else:
+        form = forms.CreateUser(instance=user)
     return render(request, "authentication/profile.html", context)
 
 

@@ -10,7 +10,7 @@
            
    <div class="container mt-3" style="width: 95%; font-size: 14px">
       
-      <form method="POST" style="background-color: #5F9EA0;" class="card p-3 mt-5 myform" {% block action %} action="{% url 'add_contrat' %}" {% endblock action %} autocomplete="off" enctype="multipart/form-data"> 
+      <form method="POST" style="background-color: #5F9EA0;" class="card p-3 mt-5" autocomplete="off" enctype="multipart/form-data"> 
             {% csrf_token %}
 
             {% comment %} {% bootstrap_form form %} {% endcomment %}
@@ -22,19 +22,8 @@
          </div>
 
          <div class="row">
-            <div class="col-4">{{form.nature|as_crispy_field}}</div>
             <div class="col-4">{{form.partenaire|as_crispy_field}}</div>
             <div class="col-4">{{form.structure|as_crispy_field}}</div>
-         </div>
-
-         <div class="row">
-           
-            <div class="col-12">{{form.matricule|as_crispy_field}}</div>
-         </div>
-
-         <div class="row">
-            <div class="col-4">{{form.nom|as_crispy_field}}</div>
-            <div class="col-4">{{form.prenom|as_crispy_field}}</div>
             <div class="col-4">{{form.montant|as_crispy_field}}</div>
          </div>
 
@@ -55,16 +44,15 @@
          </div>
 
          <div class="row">
-            <div class="col-4">{{form.lieu|as_crispy_field}}</div>
-            <div class="col-4">{{form.date_alerte|as_crispy_field}}</div>
-            <div class="col-4"> {{form.file|as_crispy_field}}</div>
+            <div class="col-6">{{form.date_alerte|as_crispy_field}}</div>
+            <div class="col-6"> {{form.file|as_crispy_field}}</div>
          </div>
 
          <div class="mt-4" style="width: 100p%;">
             <button style= "font-size: 15px;" type="submit" class="btn btn-success mb-3">
-            <i class="fas fa-plus"></i>&nbsp;&nbsp; Ajouter
+            <i class="fas fa-plus"></i>&nbsp;&nbsp; Archiver
             </button>
-            <a style= "font-size: 15px;" href="{% url 'contrat' %}" type="button" class="btn btn-outline-danger mb-3 ms-2" style="wdith: 50px;" title="Close">
+            <a style= "font-size: 15px;" href="{% url 'convention' %}" type="button" class="btn btn-outline-danger mb-3 ms-2" style="wdith: 50px;" title="Close">
                   <i class="fas fa-times"></i>
             </a>
          </div> 

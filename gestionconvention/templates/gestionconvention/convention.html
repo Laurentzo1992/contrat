@@ -18,6 +18,7 @@
       <th scope="col">ID</th>
       <th scope="col">Reference</th>
       <th scope="col">Object</th>
+      <th scope="col">Archivé</th>
       <th scope="col">signature</th>
       <th scope="col">fin</th>
       <th scope="col">Alerte</th>
@@ -29,8 +30,17 @@
     {% for convention in conventions %}
     <tr>
       <th scope="row">{{convention.id}}</th>
-      <td>{{convention.reference}}</td>
+      <td>{{convention.reference}}&nbsp;&nbsp;
+        <a href="{% url 'archive_conv' convention.id %}" title="Archiver">
+          <i class="fa-solid fa-file-zipper" style="color: red;"></i>
+      </a>
+      </td>
       <td>{{convention.objet}}</td>
+      {% if convention.archive %}
+      <td>Oui &nbsp;&nbsp; <i style="color: green;" class="fas fa-check-circle"></i>&nbsp;&nbsp; Archiver</td>
+      {% else %}
+      <td>Non &nbsp;&nbsp; Archiver</td>
+      {% endif %}
       <td>{{convention.date_signature}}</td>
       <td>{{convention.date_fin}}</td>
       <td>{{convention.date_alerte}}</td>

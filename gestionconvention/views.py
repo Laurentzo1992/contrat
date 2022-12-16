@@ -103,4 +103,18 @@ def delete_type_con(request, id):
 
 
 
+
+
+################### Archive convention #####################
+def archive(request, id):
+    convention = Convention.objects.get(id=id)
+    if request.method == 'POST':
+        form = ConventionForm(request.POST,request.FILES, instance=convention)
+        if form.is_valid():
+            form.save(id)
+            messages.success(request, f"successfully!! {convention.reference} was archived !")
+            return redirect('convention')
+    else:
+        form = ConventionForm(instance=convention)
+    return render(request, 'gestionconvention/archive.html', {'form':form})
 # Create your views here.
